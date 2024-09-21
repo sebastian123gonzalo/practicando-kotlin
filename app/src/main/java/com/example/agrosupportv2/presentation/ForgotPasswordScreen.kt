@@ -160,8 +160,8 @@ fun ForgotPasswordScreen(navController: NavController) {
             ClickableText(
                 text = text,
                 onClick = { offset ->
-                    // Obtener el índice de "Inicia sesión" en el texto
-                    val startIndex = text.indexOf("Inicia sesión")
+                    // Obtener el índice de "Inicia sesion" en el texto
+                    val startIndex = text.indexOf("Crear sesión")
                     val endIndex = startIndex + "Inicia sesión".length
 
                     if (offset in startIndex until endIndex) {

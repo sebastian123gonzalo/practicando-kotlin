@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -25,6 +26,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -111,6 +114,38 @@ fun LoginScreen(navController: NavController) {
             ) {
                 Text(text = "Iniciar Sesión", color = Color.White)
             }
+            // Spacer para empujar el texto hacia abajo
+            Spacer(modifier = Modifier.weight(1f))
+
+            // Texto clickable
+            val text = buildAnnotatedString {
+                append("¿No tienes cuenta ")
+                pushStyle(SpanStyle(fontWeight = FontWeight.Bold))
+                append("Crea tu cuenta")
+                pop()
+            }
+
+            ClickableText(
+                text = text,
+                onClick = { offset ->
+                    // Obtener el índice de "Crear cuenta" en el texto
+                    val startIndex = text.indexOf("Crea tu cuenta")
+                    val endIndex = startIndex + "Crea tu cuenta".length
+
+                    if (offset in startIndex until endIndex) {
+                        //navController.navigate("")
+                        //CREATE ACCOUNT SECTION
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    color = Color.Black,
+                    fontSize = 14.sp,
+                    textAlign = TextAlign.Center
+                )
+            )
         }
     }
 }
