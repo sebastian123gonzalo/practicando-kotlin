@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.sharp.Email
@@ -25,6 +26,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -92,13 +95,14 @@ fun ForgotPasswordScreen(navController: NavController) {
                 text = "¿Olvidaste tu contraseña?",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp), // Padding para dar espacio alrededor del texto
+                    .padding(5.dp), // Padding para dar espacio alrededor del texto
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontWeight = FontWeight.Bold, // Negrita
-                    fontSize = 25.sp // Tamaño de 32px
+                    fontSize = 28.sp // Tamaño de 30px
                 ),
                 textAlign = TextAlign.Center // Centrado
             )
+            Spacer(modifier = Modifier.height(10.dp)) // Espacio de 10px
             // Segundo texto centrado y tamaño 16px
             Text(
                 text = "¡No te preocupes! Por favor, brinda el correo electrónico de tu cuenta",
@@ -132,16 +136,47 @@ fun ForgotPasswordScreen(navController: NavController) {
             )
 
             Button(
-                onClick = {  },
-                modifier = Modifier.fillMaxWidth().padding(16.dp),
+                onClick = { navController.navigate("restorePassword") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
 
                 colors = ButtonDefaults.buttonColors(Color(0xFF092C4C))
             ) {
                 Text(text = "Enviar código", color = Color.White)
             }
 
+            // Spacer para empujar el texto hacia abajo
+            Spacer(modifier = Modifier.weight(1f))
 
+            // Texto clickable
+            val text = buildAnnotatedString {
+                append("¿Recordaste tu contraseña? ")
+                pushStyle(SpanStyle(fontWeight = FontWeight.Bold))
+                append("Inicia sesión")
+                pop()
+            }
 
+            ClickableText(
+                text = text,
+                onClick = { offset ->
+                    // Obtener el índice de "Inicia sesión" en el texto
+                    val startIndex = text.indexOf("Inicia sesión")
+                    val endIndex = startIndex + "Inicia sesión".length
+
+                    if (offset in startIndex until endIndex) {
+                        navController.navigate("login")
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    color = Color.Black,
+                    fontSize = 14.sp,
+                    textAlign = TextAlign.Center
+                )
+            )
         }
     }
 }
