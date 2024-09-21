@@ -1,24 +1,17 @@
 package com.example.agrosupportv2.presentation
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.sharp.Email
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,9 +26,7 @@ import androidx.navigation.NavController
 import com.example.agrosupportv2.R
 
 @Composable
-fun ForgotPasswordScreen(navController: NavController) {
-    val emailState = remember { mutableStateOf("") }
-
+fun RestorePasswordScreen(navController: NavController) {
     Scaffold { paddingValues ->
         Column(
             modifier = Modifier
@@ -86,60 +77,6 @@ fun ForgotPasswordScreen(navController: NavController) {
                     }
                 }
             }
-
-            // Texto que comienza justo debajo del 15% de la pantalla
-            Text(
-                text = "¿Olvidaste tu contraseña?",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp), // Padding para dar espacio alrededor del texto
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    fontWeight = FontWeight.Bold, // Negrita
-                    fontSize = 25.sp // Tamaño de 32px
-                ),
-                textAlign = TextAlign.Center // Centrado
-            )
-            // Segundo texto centrado y tamaño 16px
-            Text(
-                text = "¡No te preocupes! Por favor, brinda el correo electrónico de tu cuenta",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    fontSize = 16.sp // Tamaño 16px
-                ),
-                textAlign = TextAlign.Left // Centrado
-            )
-
-            Spacer(modifier = Modifier.height(25.dp)) // Espacio de 25px
-
-            // TextField para correo electrónico
-            TextField(
-                value = emailState.value,
-                onValueChange = { emailState.value = it },
-                label = { Text("Correo electrónico") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .background(Color.White, shape = RoundedCornerShape(10.dp)), // Fondo blanco y borde redondeado
-                singleLine = true,
-                trailingIcon = {
-                    Icon(
-                        imageVector = Icons.Sharp.Email,
-                        contentDescription = "Email"
-                    )
-                }
-            )
-
-            Button(
-                onClick = {  },
-                modifier = Modifier.fillMaxWidth().padding(16.dp),
-
-                colors = ButtonDefaults.buttonColors(Color(0xFF092C4C))
-            ) {
-                Text(text = "Enviar código", color = Color.White)
-            }
-
 
 
         }

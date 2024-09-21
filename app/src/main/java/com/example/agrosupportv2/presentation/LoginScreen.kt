@@ -77,7 +77,7 @@ fun LoginScreen(navController: NavController) {
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.Sharp.Email,
-                        contentDescription = "Done"
+                        contentDescription = "Email"
                     )
                 }
             )

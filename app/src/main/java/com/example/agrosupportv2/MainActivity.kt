@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.agrosupportv2.presentation.ForgotPasswordScreen
 import com.example.agrosupportv2.presentation.LoginScreen
+import com.example.agrosupportv2.presentation.RestorePasswordScreen
 import com.example.agrosupportv2.presentation.WelcomeScreen
 import com.example.agrosupportv2.ui.theme.AgroSupportV2Theme
 
@@ -23,6 +24,7 @@ class MainActivity : ComponentActivity() {
                     composable("welcome") { WelcomeScreen(navController) }
                     composable("login") { LoginScreen(navController) }
                     composable("forgotPassword") { ForgotPasswordScreen(navController) }
+                    composable("restorePassword") { RestorePasswordScreen(navController) }
                 }
             }
         }

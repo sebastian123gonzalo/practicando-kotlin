@@ -17,6 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -52,7 +53,7 @@ fun WelcomeScreen(navController: NavController) {
                     fontWeight = FontWeight.Bold, // Negrita
                     fontSize = 32.sp // Tamaño 32px
                 ),
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center // Centrado
+                textAlign = TextAlign.Center // Centrado
             )
 
             // Segundo texto centrado y tamaño 17px
@@ -64,7 +65,7 @@ fun WelcomeScreen(navController: NavController) {
                 style = MaterialTheme.typography.bodyMedium.copy(
                     fontSize = 17.sp // Tamaño 17px
                 ),
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center // Centrado
+                textAlign = TextAlign.Center // Centrado
             )
 
             Spacer(modifier = Modifier.height(20.dp))
